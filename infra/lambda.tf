@@ -49,9 +49,3 @@ resource "aws_cloudwatch_log_group" "lambda_logs" {
   retention_in_days = 14
   tags              = var.tags
 }
-
-data "archive_file" "lambda_zip" {
-  type        = "zip"
-  source_dir  = "${path.module}/../app"
-  output_path = "${path.module}/../app/aws_facts_lambda.zip"
-}
