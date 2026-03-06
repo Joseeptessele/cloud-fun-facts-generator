@@ -36,7 +36,7 @@ variable "lambda_runtime" {
 variable "lambda_handler" {
   description = "Handler da Lambda no formato arquivo.função"
   type        = string
-  default     = "handler.lambda_handler"
+  default     = "aws_facts_lambda.lambda_handler"
 }
 
 variable "lambda_timeout" {
