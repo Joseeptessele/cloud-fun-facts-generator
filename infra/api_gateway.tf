@@ -24,8 +24,19 @@ resource "aws_apigatewayv2_stage" "default" {
 
   access_log_settings {
     destination_arn = aws_cloudwatch_log_group.api_logs.arn
-    format = "JSON"
-  }
+    format          = jsonencode({
+      requestId        = "$context.requestId"
+      extendedRequestId = "$context.extendedRequestId"
+      sourceIp         = "$context.identity.sourceIp"
+      caller           = "$context.identity.caller"
+      user             = "$context.identity.user"
+      requestTime      = "$context.requestTime"
+      httpMethod       = "$context.httpMethod"
+      resourcePath     = "$context.resourcePath"
+      status           = "$context.status"
+      protocol         = "$context.protocol"
+      responseLength   = "$context.responseLength"})
+    }
 
 
   tags = var.tags
