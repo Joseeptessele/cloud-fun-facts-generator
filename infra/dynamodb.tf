@@ -8,6 +8,7 @@ resource "aws_dynamodb_table" "cloud_facts" {
   read_capacity    = 1
   write_capacity   = 1
   hash_key         = "FactID"
+  range_key        = "FactText"
 
   attribute {
     name = "FactID"
