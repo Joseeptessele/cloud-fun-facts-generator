@@ -14,5 +14,10 @@ resource "aws_dynamodb_table" "cloud_facts" {
     type = "S"
   }
 
+  attribute {
+    name = "FactText"
+    type = "S"
+  }
+
   tags = var.tags
 }
