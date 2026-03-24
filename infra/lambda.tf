@@ -49,6 +49,11 @@ resource "aws_iam_role_policy_attachment" "lambda_dynamodb_read_only" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonDynamoDBReadOnlyAccess"
 }
 
+resource "aws_iam_role_policy_attachment" "lambda_bedrock_full_access" {
+  role       = aws_iam_role.lambda_exec.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonBedrockFullAccess"
+}
+
 resource "aws_cloudwatch_log_group" "lambda_logs" {
   name              = "/aws/lambda/${aws_lambda_function.cloud_fun_facts.function_name}"
   retention_in_days = 14
