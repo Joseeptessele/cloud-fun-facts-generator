@@ -1,0 +1,18 @@
+###############################################################
+# dynamodb.tf - DynamoDB Table Configuration
+###############################################################
+
+resource "aws_dynamodb_table" "cloud_facts" {
+  name             = "CloudFacts"
+  billing_mode     = "PROVISIONED"
+  read_capacity    = 1
+  write_capacity   = 1
+  hash_key         = "FactID"
+
+  attribute {
+    name = "FactID"
+    type = "S"
+  }
+
+  tags = var.tags
+}
