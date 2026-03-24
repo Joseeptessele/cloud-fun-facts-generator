@@ -30,6 +30,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Build Lambda ZIP
+        run: |
+          cd app
+          zip -j aws_facts_lambda.zip aws_facts_lambda.py
+          cd ..
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
